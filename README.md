@@ -1,4 +1,22 @@
-# Risk
+- Weer bij het begin beginnen, deze keer zo veel mogelijk eigen code gebruiken.
+- Visueel voor later houden, eerst alleen tekst.
+- Proberen een AI model erin te verwerken.
+
+1. Spel is voor 2 spelers(, gebruiker en bot)
+2. De gebruiker kiest een kleur en de bot kiest één van de overige kleuren.
+3. Beide spelers krijgen 40 troepen.
+4. Haal de geheime
+
+# Neural Network (AI)
+
+Het idee is om een bot te maken, waartegen je kan spelen.
+
+Waar moet het op letten:
+- Het moet een doel hebben, welke landen wil ik hebben, bijv. van welk continent heb ik al de meeste landen.
+- Het moet kunnen door hebben wat handig is om te doen bij een aanval en dus verder kunnen kijken dan de beurt die bezig is.
+- 
+
+<!-- # Risk
 De spelregels van het spel Risk. Het spel kan gespeeld worden van 2 tot 5 spelers.
 
 # Inleiding
@@ -43,24 +61,4 @@ Op elke kaart staat de naam van een gebied en een plaatje van Infanterie, Cavale
 Op elke kaart staan alle drie de troepen.
 
 ### 12 Geheime Missiekaarten
-Let op: de 12 Geheime Missiekaarten worden alleen gebruikt als je RISK met Missiekaarten speelt. Voor de andere manieren om RISK te soelen blijven de Geheime Missiekaarten uit het spel.
-
----
-<br><br>
-
-- Weer bij het begin beginnen, deze keer zo veel mogelijk eigen code gebruiken.
-- Visueel voor later houden, eerst alleen tekst.
-- Proberen een AI model erin te verwerken.
-
-1. Spel is voor 2 spelers(, gebruiker en bot)
-2. De gebruiker kiest een kleur en de bot kiest één van de overige kleuren.
-3. 
-
-# Neural Network (AI)
-
-Het idee is om een bot te maken, waartegen je kan spelen.
-
-Waar moet het op letten:
-- Het moet een doel hebben, welke landen wil ik hebben, bijv. van welk continent heb ik al de meeste landen.
-- Het moet kunnen door hebben wat handig is om te doen bij een aanval en dus verder kunnen kijken dan de beurt die bezig is.
-- 
+Let op: de 12 Geheime Missiekaarten worden alleen gebruikt als je RISK met Missiekaarten speelt. Voor de andere manieren om RISK te soelen blijven de Geheime Missiekaarten uit het spel. -->
