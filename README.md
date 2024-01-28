@@ -1,11 +1,44 @@
+# RISK
+
 - Weer bij het begin beginnen, deze keer zo veel mogelijk eigen code gebruiken.
 - Visueel voor later houden, eerst alleen tekst.
-- Proberen een AI model erin te verwerken.
+- Proberen een AI model er in te verwerken.
+
+## Kiezen leger en plaatsen troepen
 
 1. Spel is voor 2 spelers(, gebruiker en bot)
-2. De gebruiker kiest een kleur en de bot kiest één van de overige kleuren.
-3. Beide spelers krijgen 40 troepen.
-4. Haal de geheime
+2. De gebruiker kiest een kleur en de bot en het neutrale leger krijgen beide één van de overige kleuren.
+3. Alle legers beginnen met 40 troepen.
+4. De landen worden over de legers verdeeld, zodat alle legers 14 landen hebben.
+5. Dan worden een voor een de troepen op de gekregen landen gezet, zodat er op elk land één troep staat.
+6. De rest van de troepen worden nu verdeeld, probeer de tegenstander te hinderen met de plaatsing van de troepen.
+
+## Nieuwe troepen pakken
+
+1. Je krijgt minimaal 3 troepen.
+2. Tel het aantal landen en deel dat door drie, rond af naar beneden.
+3. (Extra troepen voor de bezeten continenten)
+
+## Aanvallen
+
+1. Besluiten of er wordt aangevallen.
+2. Je mag een gebied alleen aanvallen als het grenst aan een van jou gebieden.
+3. Je mag maar één gebied tegelijk aanvallen.
+4. Je moet altijd ten minste twee troepen hebben in het gebied van waaruit je aanvalt.
+5. Na je eerste aanval, mag je blijven aanvallen totdat je alle vijandelijke troepen in het gebied verslagen hebt, of je aanval verschuiven naar een ander gebied. Je mag in één beurt zo vaak aanvallen als je wilt.
+
+### Het gevecht
+
+1. Pak eerst het aantal troepen waarmee je wil aanvallen en duw ze over de grens in het verdedigende gebied. (Je mag tot drie troepen gebruiken voor je aanval.) Er moet altijd ten minste één troep achterblijven om de wacht te houden.
+2. (Nu kiest de verdediger of hij z'n gebied met één of twee troepen gaat verdedigen. Ongeacht het aantal troepen in het verdedigende gebied, verdedigen mag uitsluitend met één of twee troepen. In tegenstelling tot de aanvaller kan de verdediger ook zijn laatste troep voor het gevecht gebruiken. Hij hoeft geen bewaking achter te laten.)
+3. Nu begint het gevecht. De aanvaller gooit één rode dobbelsteen voor elke aanvallende troep en de verdediger gooit één blauwe dobbelsteen voor elke verdedigende troep. Beide spelers moeten tegelijk gooien.
+    - Leg de hoogste dobbelstenen tegen elkaar, hoogste wint. Bij gelijk spel wint de verdediger altijd.
+    - De aanvaller kan met één worp nooit meer dan twee troepen verliezen.
+    - Als de verdedigerd na de aanval nog één of meer troepen in het aangevallen gebied over heeft, dan gaan overlevende aanvallers terug naar het gebied van waaruit ze aanvielen. Maar de aanvaller mag, desgewenst, ook opnieuw aanvallen.
+
+### Gebieden veroveren
+
+
 
 # Neural Network (AI)
 
