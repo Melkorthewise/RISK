@@ -45,3 +45,27 @@ def landen_verdelen():
                 break
 
     return player1, player2, player3
+
+def troepen_verdelen(landen, kleuren_spelers):
+    overige_troepen = [26, 26, 26] # 40 - 14
+
+    print(type(landen), landen)
+
+    running = True
+
+    while overige_troepen != [0, 0, 0]:
+        while running:
+            print(f"{kleuren_spelers[0]} is aan de beurt.")
+            keuze = input("Waar wil jij je troepen plaatsen?\n>>> ").lower()
+
+            print(keuze)
+
+            for x in landen[0]:
+                if x[0].lower() == keuze:
+                    while running:
+                        keuze = input(f"Hoeveel troepen wil je hier plaatsen? Je hebt {overige_troepen[0]} troepen.\n>>> ")
+                    
+                        
+                else:
+                    print(f"{keuze.capitalize()} is niet een van jou landen.")
+            

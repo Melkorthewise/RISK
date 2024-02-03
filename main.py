@@ -1,4 +1,4 @@
-from begin import kleuren_kiezen, landen_verdelen
+from begin import kleuren_kiezen, landen_verdelen, troepen_verdelen
 
 # Variabelen
 kleuren_legers = {
@@ -24,3 +24,5 @@ for x in range(len(kleuren_spelers)):
         landen[x][z] = land
 
         z += 1
+
+troepen = troepen_verdelen(landen, kleuren_spelers)
