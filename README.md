@@ -1,4 +1,4 @@
-# RISK
+# RISK (Dutch)
 
 - Weer bij het begin beginnen, deze keer zo veel mogelijk eigen code gebruiken.
 - Visueel voor later houden, eerst alleen tekst.
@@ -42,12 +42,30 @@
 
 # Neural Network (AI)
 
-Het idee is om een bot te maken, waartegen je kan spelen.
+Het is belangrijk om de data die je hebt over de verschillende gebieden te gebruiken om te beslissen waar je troepen moet plaatsen. Je kunt de gebieden een score geven op basis van verschillende factoren, zoals:
 
-Waar moet het op letten:
-- Het moet een doel hebben, welke landen wil ik hebben, bijv. van welk continent heb ik al de meeste landen.
-- Het moet kunnen door hebben wat handig is om te doen bij een aanval en dus verder kunnen kijken dan de beurt die bezig is.
-- 
+- **Aantal aangrenzende gebieden:** Gebieden met meer buren zijn strategisch belangrijker, omdat ze meer mogelijkheden bieden voor aanvallen en verdedigen.
+- **Continentbonussen:** Sommige continenten geven bonussen aan spelers die een meerderheid van de gebieden op dat continent bezitten.
+- **Aantal troepen:** Gebieden met meer troepen zijn moeilijker te veroveren, maar bieden ook meer verdedigingskracht.
+- **Troepen van de speler en de bot:** Je moet rekening houden met de troepenverdeling van zowel jou als de tegenstander.
+
+Gebruik de scores van de gebieden om te bepalen waar je je troepen moet plaatsen. Gebieden met hogere scores zijn doorgaans strategisch waardevoller. Je kunt je strategie ook aanpassen aan de context van de game. Als je tegenstander bijvoorbeeld agressief speelt, moet je je misschien meer concentreren op het verdedigen van je gebieden.
+
+Naast het gebruik van de data, zijn er nog andere dingen die je kunt doen om je Risk-bot te verbeteren:
+
+- **Analyseer het gedrag van je tegenstander.** Observeer hoe je tegenstander speelt en pas je strategie daaraan aan.
+- **Simuleer de uitkomsten van verschillende acties.** Dit kan je helpen om te beslissen wat de beste zet is in een bepaalde situatie.
+- **Laat je bot leren van zijn ervaringen.** Door te analyseren wat er in het verleden is gebeurd, kan je bot zijn strategie in de toekomst verbeteren.
+
+## Elementen voor de strategie
+- Waarde Gebieden
+- Risico Assessment
+- Tegenstander Analyse
+- Adaptive Learning
+
+
+
+
 
 <!-- # Risk
 De spelregels van het spel Risk. Het spel kan gespeeld worden van 2 tot 5 spelers.

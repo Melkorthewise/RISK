@@ -49,7 +49,7 @@ def landen_verdelen():
 def troepen_verdelen(landen, kleuren_spelers):
     overige_troepen = [26, 26, 26] # 40 - 14
 
-    print(type(landen), landen)
+    # print(type(landen), landen)
 
     running = True
 
