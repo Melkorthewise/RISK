@@ -57,13 +57,74 @@ Naast het gebruik van de data, zijn er nog andere dingen die je kunt doen om je 
 - **Simuleer de uitkomsten van verschillende acties.** Dit kan je helpen om te beslissen wat de beste zet is in een bepaalde situatie.
 - **Laat je bot leren van zijn ervaringen.** Door te analyseren wat er in het verleden is gebeurd, kan je bot zijn strategie in de toekomst verbeteren.
 
-## Elementen voor de strategie
-- Waarde Gebieden
-- Risico Assessment
-- Tegenstander Analyse
-- Adaptive Learning
+## Score berkenen
 
+Er zijn verschillende manieren om data een score te geven. Een eenvoudige methode is om een gewogen som te gebruiken van de verschillende factoren die je belangrijk vindt. Stel je wilt de volgende factoren meenemen:
 
+    Aantal aangrenzende gebieden (A)
+    Continentbonus (B)
+    Aantal troepen van de speler (S)
+    Aantal troepen van de bot (B)
+
+Dan kun je de volgende formule gebruiken om een score te berekenen voor elk gebied:
+
+Score = A * w_A + B * w_B + S * w_S - B * w_B
+
+De w_ variabelen zijn gewichten die je aan elke factor kunt toekennen. Hoe belangrijker een factor is, hoe hoger het gewicht. Je kunt de gewichten aanpassen aan je eigen speelstijl en strategie.
+
+Een voorbeeld:
+
+Stel je wilt gebieden met veel buren en een continentbonus prioriteren. Je kunt de volgende gewichten gebruiken:
+
+    w_A = 2
+    w_B = 3
+    w_S = 1
+    w_B = 1
+
+Een gebied met 4 buren, een continentbonus en 2 troepen van de speler zou dan de volgende score krijgen:
+
+    Score = 4 * 2 + 3 * 1 + 2 * 1 - 0 * 1 = 11
+
+Een gebied met 3 buren, geen continentbonus, 1 troep van de speler en 3 troepen van de bot zou dan de volgende score krijgen:
+
+    Score = 3 * 2 + 0 * 1 + 1 * 1 - 3 * 1 = 5
+
+In dit voorbeeld heeft het eerste gebied een hogere score, dus dat zou je prioriteit moeten zijn om troepen te plaatsen.
+
+Naast deze eenvoudige methode zijn er ook meer geavanceerde technieken om data een score te geven. Je kunt bijvoorbeeld machine learning gebruiken om een model te trainen dat de scores voorspelt op basis van de data.
+
+Het is belangrijk om te experimenteren met verschillende methoden om te zien wat het beste werkt voor jouw bot. De beste methode hangt af van de factoren die je belangrijk vindt en de speelstijl van je tegenstander.
+
+Belangrijk is dat je de scores gebruikt om een beslissing te nemen. Je kunt bijvoorbeeld de gebieden met de hoogste scores sorteren en je troepen op die gebieden plaatsen. Je kunt de scores ook gebruiken om te bepalen welke gebieden je moet aanvallen of verdedigen.
+
+1. Definieer de wiskundige formulering van het netwerk:
+    - **Aantal neuronen in de input laag:** Aantal factoren die je wilt gebruiken (4 in dit voorbeeld)
+    - **Aantal neuronen in de verborgen laag:** Kies een nummer, 10 is een gebruikelijke waarde
+    - **Aantal neuronen in de output laag:** 1 (de score)
+    - **Activatiefunctie:** Kies een activatiefunctie voor de neuronen, zoals ReLU of sigmoid
+    - **Verliesfunctie:** Kies een verliesfunctie, zoals Mean Squared Error (MSE)
+    - **Optimizers:** Kies een optimizer, zoals Adam
+
+2. Implementeer de forward pass:
+    - Bereken de activatie van de neuronen in de verborgen laag
+    - Bereken de activatie van de neuronen in de output laag
+
+3. Implementeer de backward pass:
+    - Bereken de gradiënt van de verliesfunctie met betrekking tot de gewichten van het netwerk
+    - Update de gewichten van het netwerk met behulp van de optimizer
+
+4. Train het netwerk:
+    - Herhaal de forward en backward pass totdat het netwerk geconvergeerd is
+
+5. Voorspel de scores:
+    - Gebruik de forward pass om de scores van de gebieden te voorspellen
+
+Dit is een basisimplementatie van een neuraal netwerk. Je kunt de implementatie aanpassen door verschillende optimzers, activatiefuncties, en verliesfuncties te gebruiken.
+
+Enkele tips:
+- Gebruik NumPy voor de matrixberekeningen.
+- Implementeer batch training om de efficiëntie te verhogen.
+- Gebruik een valideringsset om te voorkomen dat het netwerk overfit.
 
 
 
