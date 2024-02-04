@@ -57,7 +57,7 @@ Naast het gebruik van de data, zijn er nog andere dingen die je kunt doen om je 
 - **Simuleer de uitkomsten van verschillende acties.** Dit kan je helpen om te beslissen wat de beste zet is in een bepaalde situatie.
 - **Laat je bot leren van zijn ervaringen.** Door te analyseren wat er in het verleden is gebeurd, kan je bot zijn strategie in de toekomst verbeteren.
 
-## Score berkenen
+## Score berekenen
 
 Er zijn verschillende manieren om data een score te geven. Een eenvoudige methode is om een gewogen som te gebruiken van de verschillende factoren die je belangrijk vindt. Stel je wilt de volgende factoren meenemen:
 
