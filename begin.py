@@ -1,3 +1,7 @@
+from RISKbot import *
+from functies import continentbonus
+
+import numpy as np
 import random
 import json
 
@@ -47,25 +51,32 @@ def landen_verdelen():
     return player1, player2, player3
 
 def troepen_verdelen(landen, kleuren_spelers):
+    risk = RiskNet(landen, kleuren_spelers)
+
+    risk.formule()
+
     overige_troepen = [26, 26, 26] # 40 - 14
 
     # print(type(landen), landen)
 
     running = True
 
-    while overige_troepen != [0, 0, 0]:
-        while running:
-            print(f"{kleuren_spelers[0]} is aan de beurt.")
-            keuze = input("Waar wil jij je troepen plaatsen?\n>>> ").lower()
+    # while overige_troepen != [0, 0, 0]:
+    #     while running:
+    #         # print(landen)
 
-            print(keuze)
+    #         print(f"{kleuren_spelers[0]} is aan de beurt.")
+    #         keuze = input("Waar wil jij je troepen plaatsen?\n>>> ").lower()
 
-            for x in landen[0]:
-                if x[0].lower() == keuze:
-                    while running:
-                        keuze = input(f"Hoeveel troepen wil je hier plaatsen? Je hebt {overige_troepen[0]} troepen.\n>>> ")
-                    
+    #         # print(keuze)
+
+    #         for x in landen[0]:
+    #             if x[0].lower() == keuze:
+    #                 while running:
+    #                     keuze = int(input(f"Hoeveel troepen wil je hier plaatsen? Je hebt {overige_troepen[0]} troepen.\n>>> "))
+    #                     if keuze:
+    #                         break
                         
-                else:
-                    print(f"{keuze.capitalize()} is niet een van jou landen.")
+    #             else:
+    #                 print(f"{keuze.capitalize()} is niet een van jou landen.")
             

@@ -68,7 +68,7 @@ Er zijn verschillende manieren om data een score te geven. Een eenvoudige method
 
 Dan kun je de volgende formule gebruiken om een score te berekenen voor elk gebied:
 
-Score = A * w_A + B * w_B + S * w_S - B * w_B
+    Score = A * w_A + B * w_B + S * w_S - B * w_B
 
 De w_ variabelen zijn gewichten die je aan elke factor kunt toekennen. Hoe belangrijker een factor is, hoe hoger het gewicht. Je kunt de gewichten aanpassen aan je eigen speelstijl en strategie.
 
