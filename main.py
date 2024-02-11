@@ -1,5 +1,7 @@
 from begin import kleuren_kiezen, landen_verdelen, troepen_verdelen
 
+import matplotlib.pyplot as plt
+
 # Variabelen
 kleuren_legers = {
     "blauw": "#71baf6",
@@ -25,4 +27,26 @@ for x in range(len(kleuren_spelers)):
 
         z += 1
 
-troepen = troepen_verdelen(landen, kleuren_spelers)
+a = []
+b = []
+
+# for x in landen:
+#     for y in x:
+#         a.append(y[0])
+#         b.append(y[1]["aantal_troepen"])
+    
+# plt.scatter(a, b)
+# plt.xticks(a, rotation='vertical')
+
+landen = troepen_verdelen(landen, kleuren_spelers)
+
+for x in range(len(landen)):
+    for y in landen[x]:
+        a.append(y[0])
+        b.append(y[1]["aantal_troepen"])
+    
+    plt.scatter(a, b, color=f"{kleuren_legers[kleuren_spelers[x]]}")
+
+plt.xticks(a, rotation='vertical')
+
+plt.show()

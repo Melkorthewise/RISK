@@ -51,32 +51,50 @@ def landen_verdelen():
     return player1, player2, player3
 
 def troepen_verdelen(landen, kleuren_spelers):
-    risk = RiskNet(landen, kleuren_spelers)
-
-    risk.formule()
+    risk = RiskNet()
 
     overige_troepen = [26, 26, 26] # 40 - 14
 
-    # print(type(landen), landen)
+    for x in landen:
+        for y in x:
+            print(y)
+        print()
 
     running = True
 
-    # while overige_troepen != [0, 0, 0]:
-    #     while running:
-    #         # print(landen)
+    while overige_troepen != [0, 0, 0]:
+        print(f"{kleuren_spelers[0]} heeft {overige_troepen[0]} troepen, {kleuren_spelers[1]} heeft {overige_troepen[1]} troepen en {kleuren_spelers[2]} heeft {overige_troepen[2]} troepen.")
 
-    #         print(f"{kleuren_spelers[0]} is aan de beurt.")
-    #         keuze = input("Waar wil jij je troepen plaatsen?\n>>> ").lower()
+        if overige_troepen[0] != 0:  
+            while running:
+                try:
+                    print(f"{kleuren_spelers[0].title()} is aan de beurt.")
+                    keuze = input("Waar zou je troepen willen plaatsen?\n>>> ")
 
-    #         # print(keuze)
+                    for x in landen[0]:
+                        if x[0] == keuze.title():
+                            landen[0][landen[0].index(x)][1]["aantal_troepen"] += 1
+                            overige_troepen[0] -= 1
+                            break
+                    else:
+                        print(f"{keuze.title()} is niet een van jouw landen.")
 
-    #         for x in landen[0]:
-    #             if x[0].lower() == keuze:
-    #                 while running:
-    #                     keuze = int(input(f"Hoeveel troepen wil je hier plaatsen? Je hebt {overige_troepen[0]} troepen.\n>>> "))
-    #                     if keuze:
-    #                         break
-                        
-    #             else:
-    #                 print(f"{keuze.capitalize()} is niet een van jou landen.")
-            
+                    break
+                except KeyError:
+                    pass
+
+        if overige_troepen[1] != 0:
+            keuze_bot = risk.formule_troepen_plaatsen(landen, kleuren_spelers)
+            landen[1][landen[1].index(keuze_bot)] = keuze_bot
+            overige_troepen[1] -= 1
+
+        if overige_troepen[2] != 0:
+            landen[2][random.randint(0, 13)][1]["aantal_troepen"] += 1
+            overige_troepen[2] -= 1
+
+        for x in landen:
+            for x in x:
+                print(x)
+            print()
+
+    return landen
