@@ -42,6 +42,61 @@
 
 # Neural Network (AI)
 
+## Componenten van een Neural Network
+
+- **Lagen**: De bouwstenen van het netwerk waar informatie wordt verwerkt. Elke laag bevat neuronen die berekeningen uitvoeren op de ontvangen data.
+- **Neuronen**: Kunstmatige eenheden geïnspireerd door biologische neuronen. Ze ontvangen input van eerdere lagen, passen gewichten en biases toe, en activeren een functie om een output te produceren.
+- **Gewichten en Biases**: Leerbare parameteres die de sterkte van verbindingen tussen neuronen bepalen en de output beïnvloeden.
+- **Activatiefunctie**: Deze functie voegt non-lineariteit toe aan het netwerk, waardoor het complexe patronen kan leren. Sigmoid, ReLU en tanh zijn veelgebruikte functies.
+
+## Betrokken stappen:
+1. **Netwerkarchitectuur definiëren**: Bepaal het aantal lagen, neuronen per laag en activeringsfuncties.
+2. **Gewichten en Biases initialiseren**: Initialiseer deze parameters willekeurig.
+3. **Voortwaartse propagatie**: Geef de invoerdata door het netwerk laag per laag, waarbij gewichten, biases en activeringsfuncties worden toegepast.
+4. **Verlies berekenen**: Vergelijk de output van het netwerk met de gewenste output (grondwaarheid) om de fout te meten.
+5. **Backpropogatie**: Gebruik de kettingregel om de gradiënten van de verliesfunctie te berekenen met betrekking tot de gewichten en biases.
+6. **Gewichten en Biases bijwerken**: Pas de gewichten en baises aan op basis van de berekende gradiënten met behulp van een optimalisatiealgoritme zoals gradiëntendaling.
+7. **Herhaal**: Herhaal stappen 3-6 voor meerdere trainingsperiodes totdat het netwerk convergeert of een bevredigend prestatatieniveau bereikt.
+
+## Integratie in je spel:
+
+- **Netwerk voor trainen**: Train het netwerk op een relevante dataset voordat je het in je spel integreert. Deze dataset moet de situaties weerspiegelen die je game-AI tegenkomt.
+- **Invoer en uitvoer**: Definieer de invoerdata die het netwerk van de spelomgeving ontvangt (bijv. spelstatus, speleracties) en de gewenste output die het moet produceren (bijv. beslissingen over besturing, strategische zetten).
+- **Inferentie**: Gebruik het netwerk na het trainen om voorspellingen te doen tijdens het spelen door de huidige spelstatus als invoer te geven en de gesuggereerde actie als output te verkrijgen.
+
+## Opbouw
+
+### Eerste Neuronen
+
+De eerste neuronen in een neuraal netwerk zijn simpelweg **wiskundige functies** die input (data) omzetten in output. In de praktijk worden ze geprogrammeerd als kleine "programma's" in code. De basisfunctie van een neuron is:
+
+```
+def neuron(input, weights, bias):
+    # Berken de activatie van het neuron
+    activation = sum(input * weights) + bias
+
+    # Pas de activatiefunctie toe
+    output = sigmoid(activation)
+
+    return output
+```
+
+### Laagstructuur:
+
+Een laag in een neuraal netwerk is een verzameling van neuronen die allemaal dezelfde input ontvangen en onafhankelijk van elkaar hun output berekenen. De neuronen in een laag zijn met elkaar verbonden via gewichten.
+
+#### Meerdere Neuronen in één Laag:
+
+Wanneer je meerdere neuronen in één laag hebt, kan het netwerk complexere patronen in de data leren. Elk neuron kan zich specialiseren in het detecteren van een specifiek kenmerk in de input. De outputs van de neuronen in de laag worden vervolgens gecombineerd om de input voor de volgende laag te vormen.
+
+#### Programmeren van Meerdere Neuronen:
+
+In code worden neuronen in een laag meestal geprogrammeerd als een lus die over de input itereert. Voor lek element in de input wordt de neuronenfunctie aangeroepen met de bijbehorende gewichten en bias. De outputs van alle neuronen in de laag worden vervolgens verzameld in een array.
+
+
+
+
+---
 Het is belangrijk om de data die je hebt over de verschillende gebieden te gebruiken om te beslissen waar je troepen moet plaatsen. Je kunt de gebieden een score geven op basis van verschillende factoren, zoals:
 
 - **Aantal aangrenzende gebieden:** Gebieden met meer buren zijn strategisch belangrijker, omdat ze meer mogelijkheden bieden voor aanvallen en verdedigen.
@@ -125,6 +180,90 @@ Enkele tips:
 - Gebruik NumPy voor de matrixberekeningen.
 - Implementeer batch training om de efficiëntie te verhogen.
 - Gebruik een valideringsset om te voorkomen dat het netwerk overfit.
+
+## Trainen
+
+1. Gebruik verschillende bots:
+    Ontwikkel of verzamel verschillende bots met verschillende strategieën en speelvaardigheden.
+    Laat de bot tegen verschillende bots spelen om te leren van hun verschillende sterke en zwakke punten.
+
+2. Menselijke input toevoegen:
+    Laat de bot af en toe tegen menselijke spelers spelen om te leren van hun tactieken en strategieën.
+    Implementeer een "teaching" -functie waar spelers de bot kunnen corrigeren of feedback kunnen geven na een spel.
+
+3. Gebruik gevarieerde trainingsdata:
+    Train de bot op een dataset van spelresultaten van zowel menselijke als bot-spellen.
+    Voeg data toe van professionele Risk-spelers of toernooien om de bot te leren van de beste spelers ter wereld.
+    
+4. Beperk overfitting:
+    Zorg ervoor dat de trainingsdata gevarieerd genoeg is om te voorkomen dat de bot zich overspecialiseert in één strategie.
+    Implementeer technieken zoals regularisatie om overfitting te verminderen.
+
+5. Continueer de ontwikkeling:
+    Blijf de bot updaten met nieuwe data, strategieën en technieken.
+    Experimenteer met verschillende trainingsmethoden en parameters om de prestaties van de bot te optimaliseren.
+
+Extra tips:
+    Gebruik een "elo"-systeem: Implementeer een elo-systeem om de vaardigheid van de bot te meten en te matchen met tegenstanders van vergelijkbaar niveau.
+    Analyseer spelresultaten: Analyseer de spelresultaten van de bot om te identificeren waar verbetering nodig is.
+    Visualiseer de leercurve: Visualiseer de voortgang van de bot tijdens het trainen om te zien hoe de vaardigheid verbetert.
+
+## Uit welke onderdelen zou ik het neurale netwerk kunnen opbouwen?
+1. **Inputlaag:**
+    - De inputlaag ontvangt de data die het netwerk zal gebruiken om een voorspelling te doen. In dit geval kunnen de data bestaan uit factoren zoals:
+        + Landbouwgebieden
+        + Troepensterkte
+        + Continentbonus
+        + Aantal omringende landen
+        + Aantal omringende vijandige troepen
+        + Aantal eigen troepen in het land
+
+2. **Verborgen lagen:**
+    - Verborgen lagen bestaan uit neuronen die de input verwerken en transformeren.
+    - Het aantal verborgen lagen en neuronen per laag hangt af van de complexiteit van de taak.
+    - Meestal worden **Recurrent Neural Networks (RNNs)** of **Convolutional Neural Networks (CNNs)** gebruikt voor dit soort taken.
+
+3. **Outputlaag:**
+    -  De outputlaag produceert de voorspelling van het netwerk.
+    - In dit geval kan de outputlaag een classificatie zijn (bijv. "verover land" of "niet veroveren land") of een regressiewaarde (bijv. "kans op succes bij aanval").
+
+4. **Activatiefuncties:**
+    - Activatiefuncties bepalen hoe de neuronen in het netwerk reageren op de input.
+    - ReLU, Sigmoid en Tanh zijn veelgebruikte activatiefuncties.
+
+5. **Verliesfunctie:**
+    - De verliesfunctie bepaalt de fout van de voorspelling van het netwerk.
+    - Mean Squared Error (MSE) en Croos-Entropy zijn veelgebruikte verliesfuncties.
+
+6. **Optimizer:**
+    - De optimizer past de gewichten van het netwerk aan om de verliesfunctie te minimaliseren.
+    - Adam, SGD, en RMSProp zijn veelgebruikte optimizers.
+
+**Extra onderdelen:**
+- **Batch normalisatie:** Verbetert de stabiliteit van het trainingsproces.
+- **Dropout:** Voorkomt overfitting door willekeurig neuronen te deactiveren tijdens training.
+- **Regularisatie:** Voegt straffen toe aan de gewichten van het netwerk om overfitting te verminderen.
+
+**Van input tot output:**
+1. De inputdata wordt gepresenteerd aan de inputlaag.
+2. De neuronen in de verborgen laag(en) verwerken de input en transformeren deze.
+3. De outputlaag produceert de voorspelling van het netwerk.
+4. De verliesfunctie berekent de fout van de voorspelling.
+5. De optimizer past de gewichten van het netwerk aan om de verliesfunctie te minimaliseren.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

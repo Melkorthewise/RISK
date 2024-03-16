@@ -17,31 +17,32 @@ class RiskNet:
         # plt.bar(self.continenten, self.lpc)
         # plt.show()
 
-    def formule_troepen_plaatsen(self, landen, kleuren_spelers):
+    def layer1(input):
+        outputs = []
+
+    def formule_troepen_plaatsen(self, landen, kleuren_spelers, speler): # speler begint bij 0
         self.landen = landen
         self.kleuren_spelers = kleuren_spelers
 
-        self.score = 0
+        self.score = None
         self.land = None
 
-        self.Continentbonus = continentbonus(self.landen)
+        # Er is een percentage aan landen dat een persoon per continent kan hebben.
+        # Dit moet ook meegerekend worden in de berekening.
+        # Bijvoorbeeld 1 land hebben in Australie is meer waard dan 1 land in Azie.
+        self.Continentbonus, self.veroverde_landen = continentbonus(self.landen)
 
-        self.lpc = [0, 0, 0, 0, 0, 0]
-
-        for y in self.landen[1]:
-            z = self.continenten.index(y[1]["continent"])
-            self.lpc[z] += 1
-
-        for x in self.landen[1]:
+        for x in self.landen[speler]:
             self.A = len(x[1]["grenzen"])
 
             y = self.continenten.index(x[1]["continent"])
             self.C = self.Continentbonus[y]
 
             self.aantal = self.aantal_landen[y]
-            print("aantal", self.aantal)
+            # print("aantal", self.aantal)
 
             self.S = 0
+            self.B = x[1]["aantal_troepen"]
 
             # Kijken naar de omliggende landen naar hoeveel troepen daar staan van de tegenstanders
             for a in x[1]["grenzen"]:
@@ -51,27 +52,31 @@ class RiskNet:
                         if z[0] == a and z[1]["speler"] != self.kleuren_spelers[1]:
                             self.S += z[1]["aantal_troepen"]
 
-            self.B = x[1]["aantal_troepen"]
+                        elif z[0] == a and z[1]["speler"] == self.kleuren_spelers[1]:
+                            self.B += z[1]["aantal_troepen"]
 
-            print(x[0], self.A, self.C, self.S, self.B)
+            self.Z = self.aantal_landen[self.continenten.index(x[1]["continent"])]
+            self.G = self.veroverde_landen[self.continenten.index(x[1]["continent"])]
+            self.P = self.punten[self.continenten.index(x[1]["continent"])]
 
-            self.w_A = 1
-            self.w_C = 2
-            self.w_S = 3
-            self.w_B = 4
+            self.w_A = 1 # A is het aantal omliggende landen
+            self.w_C = 1 # C is de continentbonus
+            self.w_S = 1 # S is de troepen van de speler om het land heen
+            self.w_B = 1 # B zijn de troepen van de bot in het land
 
-            score = self.A * self.w_A + self.C * self.w_C + self.S + self.w_S - self.B * self.w_B
+            # TODO formule aanpassen zodat het minder voorkomt dat er twee landen zijn met dezelfde score
+            score = self.A * self.w_A + self.C * self.w_C + self.S + self.w_S  - self.B * self.w_B
 
-            print("Score:", score, "\n")
+            print(score, x[0], self.A, self.C, self.S, self.B, "\n")
             
-            if score > self.score:
+            if self.score == None or score > self.score:
                 self.score = score
                 self.land = x
 
         self.land[1]["aantal_troepen"] += 1
 
-        print(self.score, self.land)
-        print(self.aantal_landen)
-        print(self.lpc)
+        print("Score:", self.score, "Land: ", self.land)
+        print("Aantal landen:", self.aantal_landen)
+        print("Continentbonus:", self.Continentbonus, "Veroverde landen:", self.veroverde_landen, "\n")
 
         return self.land

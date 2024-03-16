@@ -1,5 +1,5 @@
 from RISKbot import *
-from functies import continentbonus
+from functies import continentbonus, tabel
 
 import numpy as np
 import random
@@ -50,22 +50,17 @@ def landen_verdelen():
 
     return player1, player2, player3
 
-def troepen_verdelen(landen, kleuren_spelers):
+def troepen_verdelen(landen, kleuren_spelers, automatisch):
     risk = RiskNet()
 
     overige_troepen = [26, 26, 26] # 40 - 14
-
-    for x in landen:
-        for y in x:
-            print(y)
-        print()
 
     running = True
 
     while overige_troepen != [0, 0, 0]:
         print(f"{kleuren_spelers[0]} heeft {overige_troepen[0]} troepen, {kleuren_spelers[1]} heeft {overige_troepen[1]} troepen en {kleuren_spelers[2]} heeft {overige_troepen[2]} troepen.")
 
-        if overige_troepen[0] != 0:  
+        if overige_troepen[0] != 0 and automatisch == 0:  
             while running:
                 try:
                     print(f"{kleuren_spelers[0].title()} is aan de beurt.")
@@ -80,11 +75,17 @@ def troepen_verdelen(landen, kleuren_spelers):
                         print(f"{keuze.title()} is niet een van jouw landen.")
 
                     break
+
                 except KeyError:
                     pass
 
+        elif overige_troepen[0] != 0 and automatisch == 1:
+            keuze_bot = risk.formule_troepen_plaatsen(landen, kleuren_spelers, 0)
+            landen[0][landen[0].index(keuze_bot)] = keuze_bot
+            overige_troepen[0] -= 1
+
         if overige_troepen[1] != 0:
-            keuze_bot = risk.formule_troepen_plaatsen(landen, kleuren_spelers)
+            keuze_bot = risk.formule_troepen_plaatsen(landen, kleuren_spelers, 1)
             landen[1][landen[1].index(keuze_bot)] = keuze_bot
             overige_troepen[1] -= 1
 
@@ -92,9 +93,9 @@ def troepen_verdelen(landen, kleuren_spelers):
             landen[2][random.randint(0, 13)][1]["aantal_troepen"] += 1
             overige_troepen[2] -= 1
 
-        for x in landen:
-            for x in x:
-                print(x)
-            print()
+        # tabel(landen)
+        input()
 
     return landen
+
+# TODO def missiekaarten():
