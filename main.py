@@ -16,7 +16,8 @@ kleuren_legers = {
 }
 
 kleuren_spelers = kleuren_kiezen()
-print(kleuren_spelers)
+print(type(kleuren_spelers), kleuren_spelers)
+kleuren_spelers = ("blauw", "groen", "paars")
 
 landen = landen_verdelen()
 
@@ -29,6 +30,8 @@ for x in range(len(kleuren_spelers)):
         landen[x][z] = land
 
         z += 1
+
+# print(landen)
 
 tabel(landen)
 
