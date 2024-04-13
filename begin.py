@@ -106,7 +106,7 @@ def landen_verdelen():
 def troepen_verdelen(landen, kleuren_spelers, automatisch):
     risk = RiskNet()
 
-    overige_troepen = [1, 0, 0] # 40 - 14 ! Niet vergeten terug te veranderen
+    overige_troepen = [26, 26, 26] # 40 - 14 ! Niet vergeten terug te veranderen
 
     running = True
 

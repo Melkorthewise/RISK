@@ -1,6 +1,7 @@
 from begin import kleuren_kiezen, landen_verdelen, troepen_verdelen
 from functies import continentbonus, tabel
 from RISKbot import *
+from acties import troepen_verplaatsen
 
 import matplotlib.pyplot as plt
 import pygame
@@ -41,8 +42,9 @@ screen = pygame.display.set_mode((1140, 734))
 font = pygame.font.SysFont('Comic Sans MS', 20)
 
 bg = pygame.image.load("images/kaart.jpg")
+pygame.display.update()
 
-# landen = troepen_verdelen(landen, kleuren_spelers, 1) # 0 is speler, 1 is bot
+landen = troepen_verdelen(landen, kleuren_spelers, 1) # 0 is speler, 1 is bot
 
 # ? Plot van voor en na het verdelen van de overige troepen.
 
@@ -84,3 +86,5 @@ while running:
 
     # Update het scherm.
     pygame.display.update()
+
+    troepen_verplaatsen(landen, kleuren_spelers)
