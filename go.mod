@@ -1,3 +1,3 @@
-module github.com/risk
+module RISK
 
 go 1.23.3
