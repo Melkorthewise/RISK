@@ -12,3 +12,5 @@ var Kleur_Codes = map[string]string{
 	"paars":  "#7f638c",
 	"rood":   "#ef3740",
 }
+
+var Troepen = []int{}

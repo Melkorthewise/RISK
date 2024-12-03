@@ -4,6 +4,7 @@ import (
 	"RISK/pkg/models"
 	"bufio"
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -13,8 +14,6 @@ func Kleuren_kiezen() {
 	Kleuren := models.Kleuren
 	keuzes := make([]string, len(Kleuren))
 	copy(keuzes, Kleuren)
-
-	var Legers = models.Legers
 
 	var leger string
 	var found bool
@@ -51,10 +50,23 @@ func Kleuren_kiezen() {
 		for i, color := range keuzes {
 			if strings.ToLower(color) == leger {
 				// Verwijder de kleur
-				Legers = append(Legers, leger)
+				models.Legers = append(models.Legers, leger)
 				keuzes = append(keuzes[:i], keuzes[i+1:]...)
 				break
 			}
 		}
 	}
+
+	randomNumber := rand.Intn(len(keuzes))
+	models.Legers = append(models.Legers, keuzes[randomNumber])
+
+	//fmt.Println(randomNumber)
+	//fmt.Println(keuzes[randomNumber])
+
+}
+
+func Troepen_verdelen() {
+	troepen := 40
+
+	fmt.Println(troepen)
 }
