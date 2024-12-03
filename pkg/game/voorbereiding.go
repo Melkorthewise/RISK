@@ -65,8 +65,49 @@ func Kleuren_kiezen() {
 
 }
 
-func Troepen_verdelen() {
-	troepen := 40
+func Landen_verdelen() {
+	// Todo
+}
 
-	fmt.Println(troepen)
+func Troepen_verdelen() {
+	troepen := 40 // Moet het juiste aantal zijn voor het aantal spelers en moet nog min het aantal landen
+	models.Troepen = append(models.Troepen, troepen, troepen, troepen)
+
+	scanner := bufio.NewScanner(os.Stdin)
+
+	landen := models.Landen.Gebiedskaarten
+
+	var found bool
+
+	for i := 0; i < troepen; i++ {
+		for j := 0; j < len(models.Legers); j++ {
+			for {
+				fmt.Printf("Speler %v, %v\n", models.Legers[j], models.Troepen[j])
+				fmt.Println("Op welk land zou je een troep willen neerzetten?")
+
+				// Lees de ouput van de speler
+				scanner.Scan()
+				naar := strings.ToLower(scanner.Text())
+
+				fmt.Println("Gebiedskaarten:", models.Landen.Gebiedskaarten)
+
+				for land := range landen {
+					if strings.ToLower(land) == naar {
+						found = true
+						break
+					}
+				}
+
+				if found {
+					break
+				} else {
+					fmt.Println(naar, "is niet een van de beschikbare landen")
+				}
+
+				break
+			}
+			break
+		}
+		break
+	}
 }
