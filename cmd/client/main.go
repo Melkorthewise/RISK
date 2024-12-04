@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	models.Gebieden_ophalen()
+	// models.Gebieden_ophalen()
 
 	game.Kleuren_kiezen()
 	fmt.Println(models.Kleuren)

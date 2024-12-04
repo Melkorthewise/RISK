@@ -2,6 +2,7 @@ package game
 
 import (
 	"RISK/pkg/models"
+	"RISK/pkg/utils"
 	"bufio"
 	"fmt"
 	"math/rand"
@@ -75,7 +76,7 @@ func Troepen_verdelen() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 
-	landen := models.Landen.Gebiedskaarten
+	landen := models.Landen
 
 	var found bool
 
@@ -87,12 +88,16 @@ func Troepen_verdelen() {
 
 				// Lees de ouput van de speler
 				scanner.Scan()
-				naar := strings.ToLower(scanner.Text())
-
-				fmt.Println("Gebiedskaarten:", models.Landen.Gebiedskaarten)
+				naar := utils.Capitalize(scanner.Text())
 
 				for land := range landen {
-					if strings.ToLower(land) == naar {
+					if land == naar {
+						gebied, _ := landen[naar]
+						gebied.AantalTroepen += 1
+						landen[naar] = gebied
+
+						models.Troepen[j] -= 1
+
 						found = true
 						break
 					}
@@ -104,7 +109,6 @@ func Troepen_verdelen() {
 					fmt.Println(naar, "is niet een van de beschikbare landen")
 				}
 
-				break
 			}
 			break
 		}
