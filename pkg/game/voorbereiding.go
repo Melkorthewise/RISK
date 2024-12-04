@@ -66,10 +66,6 @@ func Kleuren_kiezen() {
 
 }
 
-func Landen_verdelen() {
-	// Todo
-}
-
 func Troepen_verdelen() {
 	troepen := 40 // Moet het juiste aantal zijn voor het aantal spelers en moet nog min het aantal landen
 	models.Troepen = append(models.Troepen, troepen, troepen, troepen)

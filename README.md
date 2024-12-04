@@ -25,7 +25,7 @@ Het doel van dit project is om een werkende versie te krijgen van het bordspel R
 # Kiezen leger en plaatsen troepen
 1. Spel is voor 2 spelers
 2. `De gebruikers kiezen een kleur rest van de legers krijgen een kleur toegewezen.`
-3. Alle legers beginnen met 40 troepen.
+3. `Alle legers beginnen met 40 troepen.`
 4. De landen worden over de legers verdeeld, zodat alle legers 14 landen hebben.
 5. Dan worden een voor een de troepen op de gekregen landen gezet, zodat er op elk land een troep staat.
 6. De rest van de troepen worden nu verdeeld, probeer de tegenstander te hinderen met de plaatsing van de troepen.
