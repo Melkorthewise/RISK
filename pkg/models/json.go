@@ -1,7 +1,6 @@
 package models
 
 import (
-	"encoding/json"
 	"io"
 	"log"
 	"os"
@@ -17,11 +16,59 @@ type Gebied struct {
 	AantalTroepen int      `json:"aantal_troepen"`
 }
 
-type Gebiedskaarten struct {
-	Gebiedskaarten map[string]Gebied `json:"gebiedskaarten"`
-}
+// type Gebiedskaarten struct {
+//	Gebiedskaarten map[string]Gebied `json:"gebiedskaarten"`
+// }
 
-var Landen Gebiedskaarten
+// var Landen Gebiedskaarten
+
+var Landen map[string]Gebied
+
+func Gebieden_ophalen() {
+
+	// wd, err := os.Getwd()
+	// if err != nil {
+	// 	fmt.Printf("Error getting working directory: %v\n", err)
+	// 	return
+	// }
+	// fmt.Printf("Current working directory: %s\n", wd)
+
+	// Open JSON file
+	file, err := os.Open("../../pkg/models/gebiedskaarten.json")
+	if err != nil {
+		log.Fatalf("Error opening file: %v", err)
+	}
+	defer file.Close()
+
+	// Lees de inhoud van de JSON
+	data, err := io.ReadAll(file)
+	if err != nil {
+		log.Fatalf("Error opening file: %v", err)
+	}
+
+	// Declare the map to hold the data
+	// var Landen map[string]Gebied
+
+	// Unmarshal the JSON into the map
+	// err = json.Unmarshal(data, &Landen)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// Bind the JSON body to the struct and validate
+	if err := data.ShouldBindJSON(&Landen); err != nil {
+		return
+	}
+
+	// // Accessing the data
+	// // for name, region := range gebiedskaarten.Gebiedskaarten {
+	// // 	fmt.Printf("Region: %s\n", name)
+	// // 	fmt.Printf("  Continent: %s\n", region.Continent)
+	// // 	fmt.Printf("  Troep: %s\n", region.Troep)
+	// // 	fmt.Printf("  Locatie: %s\n", region.Locatie)
+	// // 	fmt.Printf("  Grenzen: %v\n", region.Grenzen)
+	// // }
+}
 
 // var Landen map[string]Gebied = map[string]Gebied{
 // 	"Alaska":                  {Continent: "N_Amerika", Troep: "I", Locatie: "(105, 120)", Grenzen: []string{"Noordwestelijke staten", "Alberta", "Kamtsjatka"}, Speler: "blauw", AantalTroepen: 1},
@@ -66,43 +113,4 @@ var Landen Gebiedskaarten
 // 	"Mongolie":                {Continent: "Azie", Troep: "I", Locatie: "(932, 274)", Grenzen: []string{"Siberie", "Irkoetsk", "Japan", "China"}, Speler: "paars", AantalTroepen: 1},
 // 	"Zuidoost-azie":           {Continent: "Azie", Troep: "I", Locatie: "(919, 425)", Grenzen: []string{"India", "China", "Zuidoost-azie", "Indonesie"}, Speler: "paars", AantalTroepen: 1},
 // 	"Nieuw-guinea":            {Continent: "Oceanie", Troep: "I", Locatie: "(1021, 511)", Grenzen: []string{"Indonesie", "Oost-australie"}, Speler: "paars", AantalTroepen: 1},
-// }
-
-func Gebieden_ophalen() {
-
-	// wd, err := os.Getwd()
-	// if err != nil {
-	// 	fmt.Printf("Error getting working directory: %v\n", err)
-	// 	return
-	// }
-	// fmt.Printf("Current working directory: %s\n", wd)
-
-	// Open JSON file
-	file, err := os.Open("../../pkg/models/gebiedskaarten.json")
-	if err != nil {
-		log.Fatalf("Error opening file: %v", err)
-	}
-	defer file.Close()
-
-	// Lees de inhoud van de JSON
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatalf("Error opening file: %v", err)
-	}
-
-	// Parse de JSON
-	// var Landen Gebiedskaarten
-	err = json.Unmarshal(data, &Landen)
-	if err != nil {
-		log.Fatalf("Error opening file: %v", err)
-	}
-
-	// // Accessing the data
-	// // for name, region := range gebiedskaarten.Gebiedskaarten {
-	// // 	fmt.Printf("Region: %s\n", name)
-	// // 	fmt.Printf("  Continent: %s\n", region.Continent)
-	// // 	fmt.Printf("  Troep: %s\n", region.Troep)
-	// // 	fmt.Printf("  Locatie: %s\n", region.Locatie)
-	// // 	fmt.Printf("  Grenzen: %v\n", region.Grenzen)
-	// // }
-}
+// {
